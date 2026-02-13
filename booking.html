@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Salon Booking</title>
+<link rel="stylesheet" href="booking.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Salon Appointment Booking</h2>
+
+<form id="bookingForm">
+
+<label>Select Service</label>
+<select id="service">
+<option>Hair Cut</option>
+<option>Beard Trim</option>
+<option>Facial</option>
+<option>Hair Spa</option>
+<option >Massage</option>
+<option ></option>
+<option ></option>
+</select>
+
+<label>Select Date</label>
+<input type="date" id="date" required>
+
+<label>Select Time</label>
+<select id="time">
+<option>10:00 AM</option>
+<option>12:00 PM</option>
+<option>02:00 PM</option>
+<option>04:00 PM</option>
+<option>06:00 PM</option>
+</select>
+
+<label>Your Name</label>
+<input type="text" id="name" required>
+
+<label>Phone Number</label>
+<input type="tel" id="phone" required>
+
+<button type="submit">Book Appointment</button>
+
+</form>
+
+<div id="result"></div>
+
+</div>
+
+<script src="booking.js"></script>
+
+</body>
+</html>

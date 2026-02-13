@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Premium Salon Live Location</title>
+
+<style>
+
+/* ===== BODY ===== */
+body{
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* ===== PREMIUM GLASS CARD ===== */
+.location-section{
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.15);
+    border-radius:20px;
+    padding:30px;
+    width:380px;
+    text-align:center;
+    color:white;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.location-section h2{
+    margin-bottom:15px;
+}
+
+/* ===== BUTTON ===== */
+button{
+    background:white;
+    color:#ff4d6d;
+    border:none;
+    padding:12px 22px;
+    border-radius:30px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+/* ===== RESULT TEXT ===== */
+#result{
+    margin-top:15px;
+    font-size:14px;
+}
+
+/* ===== MAP ===== */
+iframe{
+    margin-top:15px;
+    border-radius:15px;
+    width:100%;
+    height:220px;
+    border:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="location-section">
+
+<h2>📍 Find Nearest Salon</h2>
+
+<button onclick="getLocation()">Use My Live Location</button>
+
+<div id="result"></div>
+
+<iframe id="mapFrame"></iframe>
+
+</div>
+
+<script>
+
+function getLocation(){
+
+    if(navigator.geolocation){
+
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+
+    } else {
+        document.getElementById("result").innerHTML="Geolocation not supported.";
+    }
+}
+
+function showPosition(position){
+
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+
+    // Show coordinates
+    document.getElementById("result").innerHTML =
+        "Latitude: " + lat.toFixed(5) + "<br>Longitude: " + lon.toFixed(5);
+
+    // Show map
+    document.getElementById("mapFrame").src =
+        "https://maps.google.com/maps?q="+lat+","+lon+"&z=15&output=embed";
+}
+
+function showError(){
+    document.getElementById("result").innerHTML =
+        "❌ Location permission denied.";
+}
+
+</script>
+
+</body>
+</html>
